@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augusto - Conecte-se comigo</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #220022, #550000);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 320px;
+            padding: 15px;
+            background: linear-gradient(135deg, #330033, #770000);
+            border-radius: 15px;
+            box-shadow: 0px 0px 30px rgba(255, 0, 0, 0.7);
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff3333;
+            animation: pulse 2s infinite;
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.2);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+        .links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(90deg, #990033, #770000);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 20px;
+            margin: 8px 0;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .links a:hover {
+            background: linear-gradient(90deg, #ff4d4d, #cc0000);
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(255, 51, 51, 0.7);
+        }
+        .links a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: -100%;
+            transition: left 0.3s;
+        }
+        .links a:hover::before {
+            left: 100%;
+        }
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .description {
+            font-size: 14px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="imagemPerfil.jpg" alt="Augusto" class="profile-img">
+        <h2 class="title">Augusto - Conecte-se comigo</h2>
+        <p class="description">Programado para satisfazer. Acesse meus links abaixo:</p>
+        <div class="links" id="links-container"></div>
+    </div>
+
+    <script>
+        const links = [
+            { url: "https://wa.me/message/ZP4HUTQNCXNUG1", text: "📞 WhatsApp" },
+            { url: "https://garotocomlocal.com.br/acompanhante-masculino/augusto-maldonatto/", text: "📍 Garotos com Local" },
+            { url: "https://x.com/thescorpionmg", text: "🐦 Twitter" },
+            { url: "https://www.instagram.com/augustomaldonatto", text: "📷 Instagram" },
+            { url: "https://privacy.com.br/profile/augustomaldonatto", text: "🔒 Privacy" }
+        ];
+
+
+        const container = document.getElementById("links-container");
+
+        links.forEach(link => {
+            const a = document.createElement("a");
+            a.href = link.url;
+            a.textContent = link.text;
+            a.target = "_blank";
+            container.appendChild(a);
+        });
+    </script>
+</body>
+</html>
