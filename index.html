@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Acesse todos os meus links em um só lugar. Redes sociais, contatos e muito mais!">
-<meta name="keywords" content="links, redes sociais, contato, bio, website">
-<meta name="author" content="Augusto">
+  <meta name="keywords" content="links, redes sociais, contato, bio, website">
+  <meta name="author" content="Augusto">
   <title>Augusto - Conecte-se comigo</title>
   <style>
     /* Modos de tela */
@@ -14,7 +14,6 @@
       color: white;
     }
     body.light-mode {
-      /* Visual claro e distinto do modo escuro */
       background: linear-gradient(135deg, #ffffff, #e0e0e0);
       color: #333;
     }
@@ -40,13 +39,12 @@
     .container:hover {
       transform: scale(1.05);
     }
-    /* Alteração no modo claro */
     body.light-mode .container {
-      background: linear-gradient(135deg, #f0f0f0, #cccccc); /* Fundo mais claro no modo claro */
+      background: linear-gradient(135deg, #f0f0f0, #cccccc);
     }
     body.light-mode .container h2,
     body.light-mode .description {
-      color: #222; /* Cor do texto no modo claro */
+      color: #222;
     }
     .profile-img {
       width: 100px;
@@ -74,9 +72,8 @@
       font-size: 14px;
       margin-bottom: 10px;
       opacity: 0.8;
-      min-height: 20px; /* Garante espaço para o efeito digitado */
+      min-height: 20px;
     }
-    /* Área para exibição dos botões – um por vez */
     .links {
       position: relative;
       height: 50px;
@@ -105,7 +102,6 @@
       transform: scale(1.05);
       box-shadow: 0px 4px 12px rgba(255, 51, 51, 0.7);
     }
-    /* Botão para alternar modos */
     #toggle-mode {
       position: fixed;
       top: 20px;
@@ -121,7 +117,6 @@
     #toggle-mode:hover {
       background: #cc0000;
     }
-    /* Responsividade */
     @media (max-width: 768px) {
       .container {
         max-width: 300px;
@@ -134,13 +129,11 @@
   <div class="container">
     <img src="imagemPerfil.jpg" alt="Augusto" class="profile-img">
     <h2 class="title">Augusto - Conecte-se comigo</h2>
-    <!-- A descrição inicia vazia para o efeito digitado -->
     <p class="description"></p>
     <div class="links" id="links-container"></div>
   </div>
 
   <script>
-    // Array com os links (nomes e URLs originais)
     const links = [
       { url: "https://wa.me/message/ZP4HUTQNCXNUG1", text: "📞 WhatsApp" },
       { url: "https://x.com/thescorpionmg", text: "🐦 X" },
@@ -148,94 +141,69 @@
       { url: "https://privacy.com.br/profile/augustomaldonatto", text: "🔒 Privacy" }
     ];
 
-    // Alterna entre modos claro e escuro
     const toggleBtn = document.getElementById("toggle-mode");
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       document.body.classList.toggle("light-mode");
-      if (document.body.classList.contains("light-mode")) {
-        toggleBtn.textContent = "Modo Escuro";
-      } else {
-        toggleBtn.textContent = "Modo Claro";
-      }
+      toggleBtn.textContent = document.body.classList.contains("light-mode")
+        ? "Modo Escuro"
+        : "Modo Claro";
     });
 
-    // Função para efeito digitado em textos
-    function typeOut(element, text, speed, callback) {
+    function typeOut(el, txt, speed, cb) {
       let i = 0;
-      element.textContent = "";
-      function typeLetter() {
-        if (i < text.length) {
-          element.textContent += text.charAt(i);
-          i++;
-          setTimeout(typeLetter, speed);
-        } else if (callback) {
-          callback();
-        }
-      }
-      typeLetter();
+      el.textContent = "";
+      (function loop() {
+        if (i < txt.length) {
+          el.textContent += txt.charAt(i++);
+          setTimeout(loop, speed);
+        } else cb && cb();
+      })();
     }
 
-    // Função para efeito digitado nos botões
-    function typeOutButton(a, text, speed, callback) {
+    function typeOutButton(a, txt, speed, cb) {
       let i = 0;
       a.textContent = "";
-      function typeLetter() {
-        if (i < text.length) {
-          a.textContent += text.charAt(i);
-          i++;
-          setTimeout(typeLetter, speed);
-        } else if (callback) {
-          callback();
-        }
-      }
-      typeLetter();
+      (function loop() {
+        if (i < txt.length) {
+          a.textContent += txt.charAt(i++);
+          setTimeout(loop, speed);
+        } else cb && cb();
+      })();
     }
 
-    // Efeito digitado para a descrição
-    const descriptionText = "Programado para satisfazer. Acesse meus links abaixo:";
-    const descriptionElement = document.querySelector(".description");
-    typeOut(descriptionElement, descriptionText, 50, () => {
-      cycleButtons();
-    });
+    const descEl = document.querySelector(".description");
+    typeOut(descEl,
+      "Programado para satisfazer. Acesse meus links abaixo:", 50,
+      () => cycleButtons());
 
-    // Variáveis para controle do ciclo dos botões
-    let index = 0;
-    let direction = 1; // 1 para avançar, -1 para voltar
-    let pauseCycle = false; // Flag para pausar em hover
-
-    // Função que exibe os botões de forma cíclica com efeito digitado
+    let idx = 0, dir = 1, pause = false;
     function cycleButtons() {
       const container = document.getElementById("links-container");
       container.innerHTML = "";
       const a = document.createElement("a");
-      a.href = links[index].url;
+      a.href = links[idx].url;
       a.target = "_blank";
       container.appendChild(a);
 
-      // Pausa o ciclo quando o mouse estiver sobre o botão
-      a.addEventListener("mouseover", () => { pauseCycle = true; });
-      a.addEventListener("mouseout", () => { pauseCycle = false; });
+      a.addEventListener("mouseover", () => pause = true);
+      a.addEventListener("mouseout", () => pause = false);
 
       setTimeout(() => {
         a.style.transition = "opacity 0.5s";
         a.style.opacity = "1";
-        typeOutButton(a, links[index].text, 50, function() {
-          // Mantém o botão visível por um tempo antes de desaparecer
+        typeOutButton(a, links[idx].text, 50, () => {
           setTimeout(() => {
             a.style.opacity = "0";
             setTimeout(() => {
-              if (!pauseCycle) {
-                index += direction;
-                if (index >= links.length || index < 0) {
-                  direction *= -1;
-                  index += direction;
+              if (!pause) {
+                idx += dir;
+                if (idx === links.length || idx < 0) {
+                  dir *= -1;
+                  idx += dir;
                 }
                 cycleButtons();
-              } else {
-                // Se estiver pausado, tenta novamente após 500ms
-                setTimeout(cycleButtons, 500);
-              }
+              } else setTimeout(cycleButtons, 500);
             }, 500);
           }, 1500);
         });
