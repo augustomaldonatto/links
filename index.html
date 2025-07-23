@@ -75,12 +75,16 @@
       min-height: 20px;
     }
     .links {
+      position: relative;
+      height: 50px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
     .links a {
-      display: block;
+      position: absolute;
+      display: flex;
       justify-content: center;
       align-items: center;
       background: linear-gradient(90deg, #ff6f61, #ff9472);
@@ -90,11 +94,8 @@
       border-radius: 20px;
       font-size: 14px;
       font-weight: bold;
+      transition: all 0.3s;
       opacity: 0;
-      transition: opacity 0.5s, transform 0.3s;
-    }
-    .links a.show {
-      opacity: 1;
     }
     .links a:hover {
       background: linear-gradient(90deg, #ff8a65, #ffab91);
@@ -128,7 +129,7 @@
   <div class="container">
     <img src="imagemPerfil.jpg" alt="Augusto" class="profile-img">
     <h2 class="title">Augusto - Conecte-se comigo</h2>
-    <p class="description" id="desc"></p>
+    <p class="description"></p>
     <div class="links" id="links-container"></div>
   </div>
 
@@ -160,29 +161,54 @@
       })();
     }
 
-    function revealLinksSequentially(container) {
-      links.forEach((link, index) => {
-        setTimeout(() => {
-          const a = document.createElement("a");
-          a.href = link.url;
-          a.textContent = link.text;
-          a.target = "_blank";
-          container.appendChild(a);
-          // trigger fade-in
-          setTimeout(() => a.classList.add('show'), 50);
-        }, index * 800);
-      });
+    function typeOutButton(a, txt, speed, cb) {
+      let i = 0;
+      a.textContent = "";
+      (function loop() {
+        if (i < txt.length) {
+          a.textContent += txt.charAt(i++);
+          setTimeout(loop, speed);
+        } else cb && cb();
+      })();
     }
 
-    const descEl = document.getElementById("desc");
+    const descEl = document.querySelector(".description");
     typeOut(descEl,
-      "Seu desejo, meu comando. Sou programado para te satisfazer! ", 50,
-      () => {
-        const container = document.getElementById("links-container");
-        revealLinksSequentially(container);
-      }
-    );
+      "Programado para conectar. Acesse meus links abaixo:", 50,
+      () => cycleButtons());
+
+    let idx = 0, dir = 1, pause = false;
+    function cycleButtons() {
+      const container = document.getElementById("links-container");
+      container.innerHTML = "";
+      const a = document.createElement("a");
+      a.href = links[idx].url;
+      a.target = "_blank";
+      container.appendChild(a);
+
+      a.addEventListener("mouseover", () => pause = true);
+      a.addEventListener("mouseout", () => pause = false);
+
+      setTimeout(() => {
+        a.style.transition = "opacity 0.5s";
+        a.style.opacity = "1";
+        typeOutButton(a, links[idx].text, 50, () => {
+          setTimeout(() => {
+            a.style.opacity = "0";
+            setTimeout(() => {
+              if (!pause) {
+                idx += dir;
+                if (idx === links.length || idx < 0) {
+                  dir *= -1;
+                  idx += dir;
+                }
+                cycleButtons();
+              } else setTimeout(cycleButtons, 500);
+            }, 500);
+          }, 1500);
+        });
+      }, 500);
+    }
   </script>
 </body>
 </html>
-"" 
