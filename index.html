@@ -8,7 +8,6 @@
   <meta name="author" content="Augusto">
   <title>Augusto - Conecte-se comigo</title>
   <style>
-    /* Modos de tela */
     body.dark-mode {
       background: linear-gradient(135deg, #220022, #550000);
       color: white;
@@ -78,9 +77,10 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      margin-top: 10px;
     }
     .links a {
-      display: block;
+      display: flex;
       justify-content: center;
       align-items: center;
       background: linear-gradient(90deg, #ff6f61, #ff9472);
@@ -90,8 +90,8 @@
       border-radius: 20px;
       font-size: 14px;
       font-weight: bold;
+      transition: all 0.3s, opacity 0.8s ease;
       opacity: 0;
-      transition: opacity 0.5s, transform 0.3s;
     }
     .links a.show {
       opacity: 1;
@@ -128,16 +128,17 @@
   <div class="container">
     <img src="imagemPerfil.jpg" alt="Augusto" class="profile-img">
     <h2 class="title">Augusto - Conecte-se comigo</h2>
-    <p class="description" id="desc"></p>
+    <p class="description"></p>
     <div class="links" id="links-container"></div>
   </div>
 
   <script>
     const links = [
       { url: "https://wa.me/message/ZP4HUTQNCXNUG1", text: "📞 WhatsApp" },
-      { url: "https://x.com/thescorpionmg", text: "🐦 X" },
-      { url: "https://www.instagram.com/augustomaldonatto", text: "📷 Instagram" },
-      { url: "https://privacy.com.br/profile/augustomaldonatto", text: "🔒 Privacy" }
+      { url: "https://x.com/augustomaldonat", text: "🐦 X" },
+      { url: "https://t.me/augustomaldonatto", text: "✈️ Telegram" },
+      { url: "https://privacy.com.br/profile/augustomaldonatto", text: "🔒 Privacy" },
+      { url: "https://www.instagram.com/augustomaldonatto", text: "📷 Instagram" }
     ];
 
     const toggleBtn = document.getElementById("toggle-mode");
@@ -160,28 +161,29 @@
       })();
     }
 
-    function revealLinksSequentially(container) {
-      links.forEach((link, index) => {
+    const descEl = document.querySelector(".description");
+    typeOut(
+      descEl,
+      "Programado para realizar todos os seus desejos! ;) Acesse meus links:",
+      50,
+      () => showLinks()
+    );
+
+    function showLinks() {
+      const container = document.getElementById("links-container");
+      links.forEach((item, index) => {
+        const a = document.createElement("a");
+        a.href = item.url;
+        a.target = "_blank";
+        a.textContent = item.text;
+        container.appendChild(a);
+
+        // atraso para animação em cascata
         setTimeout(() => {
-          const a = document.createElement("a");
-          a.href = link.url;
-          a.textContent = link.text;
-          a.target = "_blank";
-          container.appendChild(a);
-          // trigger fade-in
-          setTimeout(() => a.classList.add('show'), 50);
-        }, index * 800);
+          a.classList.add("show");
+        }, index * 500);
       });
     }
-
-    const descEl = document.getElementById("desc");
-    typeOut(descEl,
-      "Seu desejo, meu comando. Sou programado para te satisfazer!", 50,
-      () => {
-        const container = document.getElementById("links-container");
-        revealLinksSequentially(container);
-      }
-    );
   </script>
 </body>
 </html>
