@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,7 +8,6 @@
   <meta name="author" content="Augusto">
   <title>Augusto - Conecte-se comigo</title>
   <style>
-    /* Modos de tela */
     body.dark-mode {
       background: linear-gradient(135deg, #220022, #550000);
       color: white;
@@ -76,15 +74,12 @@
       min-height: 20px;
     }
     .links {
-      position: relative;
-      height: 50px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
     }
     .links a {
-      position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -95,8 +90,11 @@
       border-radius: 20px;
       font-size: 14px;
       font-weight: bold;
-      transition: all 0.3s;
+      transition: all 0.3s, opacity 0.8s ease;
       opacity: 0;
+    }
+    .links a.show {
+      opacity: 1;
     }
     .links a:hover {
       background: linear-gradient(90deg, #ff8a65, #ffab91);
@@ -137,9 +135,10 @@
   <script>
     const links = [
       { url: "https://wa.me/message/ZP4HUTQNCXNUG1", text: "📞 WhatsApp" },
-      { url: "https://x.com/thescorpionmg", text: "🐦 X" },
-      { url: "https://www.instagram.com/augustomaldonatto", text: "📷 Instagram" },
-      { url: "https://privacy.com.br/profile/augustomaldonatto", text: "🔒 Privacy" }
+      { url: "https://x.com/augustomaldonat", text: "🐦 X" },
+      { url: "https://t.me/augustomaldonatto", text: "✈️ Telegram" },
+      { url: "https://privacy.com.br/profile/augustomaldonatto", text: "🔒 Privacy" },
+      { url: "https://www.instagram.com/augustomaldonatto", text: "📷 Instagram" }
     ];
 
     const toggleBtn = document.getElementById("toggle-mode");
@@ -162,54 +161,29 @@
       })();
     }
 
-    function typeOutButton(a, txt, speed, cb) {
-      let i = 0;
-      a.textContent = "";
-      (function loop() {
-        if (i < txt.length) {
-          a.textContent += txt.charAt(i++);
-          setTimeout(loop, speed);
-        } else cb && cb();
-      })();
-    }
-
     const descEl = document.querySelector(".description");
-    typeOut(descEl,
-      "Programado para realizar todos os seus desejos! ;) Acesse meus links:", 50,
-      () => cycleButtons());
+    typeOut(
+      descEl,
+      "Programado para realizar todos os seus desejos! ;) Acesse meus links:",
+      50,
+      () => showLinks()
+    );
 
-    let idx = 0, dir = 1, pause = false;
-    function cycleButtons() {
+    function showLinks() {
       const container = document.getElementById("links-container");
-      container.innerHTML = "";
-      const a = document.createElement("a");
-      a.href = links[idx].url;
-      a.target = "_blank";
-      container.appendChild(a);
+      links.forEach((item, index) => {
+        const a = document.createElement("a");
+        a.href = item.url;
+        a.target = "_blank";
+        a.textContent = item.text;
+        container.appendChild(a);
 
-      a.addEventListener("mouseover", () => pause = true);
-      a.addEventListener("mouseout", () => pause = false);
-
-      setTimeout(() => {
-        a.style.transition = "opacity 0.5s";
-        a.style.opacity = "1";
-        typeOutButton(a, links[idx].text, 50, () => {
-          setTimeout(() => {
-            a.style.opacity = "0";
-            setTimeout(() => {
-              if (!pause) {
-                idx += dir;
-                if (idx === links.length || idx < 0) {
-                  dir *= -1;
-                  idx += dir;
-                }
-                cycleButtons();
-              } else setTimeout(cycleButtons, 500);
-            }, 500);
-          }, 1500);
-        });
-      }, 500);
+        // atraso para animação em cascata
+        setTimeout(() => {
+          a.classList.add("show");
+        }, index * 500);
+      });
     }
   </script>
-</body> 
+</body>
 </html>
