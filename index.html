@@ -1,228 +1,697 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#100914" />
 
-  <!-- SEO PRINCIPAL -->
-  <title>Augusto Maldonatto | Conteúdo Exclusivo 🔥</title>
-  <meta name="description" content="Acesse meu conteúdo exclusivo, redes sociais e áreas privadas. Clique e descubra 🔥" />
-  <meta name="keywords" content="OnlyFans, Privacy, Conteúdo adulto, Augusto Maldonatto, links, bio" />
-  <meta name="author" content="Augusto Maldonatto" />
+  <title>Motoca Quente | Conteúdo Exclusivo 🔥</title>
 
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="Augusto Maldonatto 🔥 Conteúdo Exclusivo" />
-  <meta property="og:description" content="Acesso direto ao meu conteúdo privado e redes sociais." />
+  <meta name="description" content="Acesse minhas plataformas exclusivas e redes sociais. Entre e conecte-se comigo!" />
+  <meta name="keywords" content="Motoca Quente, OnlyFans, Privacy, links, conteúdo exclusivo" />
+  <meta name="author" content="Motoca Quente" />
+
+  <meta property="og:title" content="Motoca Quente 🔥" />
+  <meta property="og:description" content="Minhas plataformas exclusivas e redes sociais. Acesse aqui!" />
   <meta property="og:type" content="website" />
-
-  <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- GOOGLE ANALYTICS 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    * { box-sizing: border-box; }
+    :root {
+      --background: #100914;
+      --card: rgba(29, 17, 35, 0.88);
+      --text: #ffffff;
+      --muted: #c7b9ce;
+      --border: rgba(255, 255, 255, 0.12);
+      --accent: #ff315b;
+      --accent2: #b54cff;
+      --button-text: #ffffff;
+      --shadow: rgba(255, 49, 91, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Poppins', system-ui, sans-serif;
-      margin: 0;
       min-height: 100vh;
+      padding: 88px 18px 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      transition: background 0.4s, color 0.4s;
+      overflow-x: hidden;
+      position: relative;
+
+      font-family: "Poppins", system-ui, sans-serif;
+      color: var(--text);
+
+      background-color: var(--background);
+      background-image:
+        linear-gradient(rgba(8, 5, 12, 0.60), rgba(8, 5, 12, 0.78)),
+        radial-gradient(ellipse at 15% 15%, rgba(181, 76, 255, 0.20), transparent 38%),
+        radial-gradient(ellipse at 85% 75%, rgba(255, 49, 91, 0.17), transparent 40%);
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+
+      transition:
+        background 0.35s ease,
+        color 0.35s ease;
     }
 
-    body.dark-mode {
-      background: radial-gradient(circle at top, #2a002a, #000);
-      color: #fff;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    body.light-mode {
-      background: linear-gradient(135deg, #ffffff, #e5e5e5);
-      color: #222;
+    button {
+      font: inherit;
     }
+
+    /* CARTÃO PRINCIPAL */
 
     .container {
+      position: relative;
       width: 100%;
-      max-width: 340px;
-      padding: 22px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #3b003b, #8b0000);
-      box-shadow: 0 0 40px rgba(255, 0, 0, 0.55);
+      max-width: 390px;
+
+      padding: 34px 24px 25px;
+      overflow: hidden;
+
       text-align: center;
-      animation: fadeIn 0.8s ease;
+
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.22),
+        0 0 45px var(--shadow);
+
+      animation: appear 0.7s ease both;
+
+      transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
-    body.light-mode .container {
-      background: linear-gradient(135deg, #f4f4f4, #d6d6d6);
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      width: 76%;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent),
+        var(--accent2),
+        transparent
+      );
+
+      box-shadow: 0 0 18px var(--accent2);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .container::after {
+      content: "";
+      position: absolute;
+      top: -110px;
+      left: 50%;
 
-    .profile-video {
-      width: 110px;
-      height: 110px;
+      width: 220px;
+      height: 220px;
+
+      transform: translateX(-50%);
       border-radius: 50%;
-      border: 3px solid #ff2f2f;
-      object-fit: cover;
-      animation: pulse 2s infinite;
-      margin-bottom: 12px;
+
+      background: rgba(181, 76, 255, 0.08);
+      filter: blur(45px);
+
+      pointer-events: none;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
+    /* FOTO DE PERFIL */
+
+    .profile-wrapper {
+      position: relative;
+      z-index: 1;
+
+      width: 126px;
+      height: 126px;
+      margin: 0 auto 19px;
+      padding: 4px;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        135deg,
+        #ff315b,
+        #ff8a5c,
+        #b54cff,
+        #ff315b
+      );
+
+      background-size: 250% 250%;
+      animation: borderGlow 5s ease infinite;
+
+      box-shadow:
+        0 0 20px rgba(255, 49, 91, 0.28),
+        0 0 35px rgba(181, 76, 255, 0.15);
+    }
+
+    @keyframes borderGlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .profile-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      border: 3px solid var(--card);
+      border-radius: 50%;
+      background: #24162b;
+    }
+
+    /* NOME E DESCRIÇÃO */
 
     h1 {
-      font-size: 17px;
-      margin: 6px 0;
-      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+
+      font-size: clamp(19px, 5vw, 23px);
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+
+      overflow-wrap: anywhere;
+
+      background: linear-gradient(
+        90deg,
+        var(--text),
+        #ff8ba3,
+        #d5a0ff,
+        var(--text)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .description {
-      font-size: 14px;
-      opacity: 0.85;
-      min-height: 24px;
-      margin-bottom: 14px;
+    .subtitle {
+      margin-top: 9px;
+      margin-bottom: 23px;
+
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      letter-spacing: 0.4px;
     }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+
+      margin-bottom: 12px;
+
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #36e6a0;
+      box-shadow: 0 0 10px rgba(54, 230, 160, 0.8);
+    }
+
+    /* LISTA DE BOTÕES */
 
     .links {
+      position: relative;
+      z-index: 1;
+
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .links a {
-      padding: 14px;
-      border-radius: 26px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #fff;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.4s ease;
-    }
-
-    .links a.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .links a:hover {
-      transform: scale(1.06);
-      box-shadow: 0 6px 16px rgba(255,0,0,0.6);
-    }
-
-    /* LINKS NORMAIS */
-    .normal {
-      background: linear-gradient(90deg, #ff6f61, #ff9472);
-    }
-
-    /* LINKS VIP */
-    .vip {
-      background: linear-gradient(90deg, #ff0000, #ff6a00);
-      box-shadow: 0 0 18px rgba(255, 60, 0, 0.8);
+    .link-button {
       position: relative;
-    }
 
-    .vip::after {
-      content: "VIP";
-      position: absolute;
-      top: -8px;
-      right: 14px;
-      background: gold;
-      color: #000;
-      font-size: 10px;
-      font-weight: bold;
-      padding: 2px 6px;
-      border-radius: 10px;
-    }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
 
-    #toggle-mode {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 12px;
-      background: #ff3333;
-      color: white;
-      cursor: pointer;
+      width: 100%;
+      min-height: 53px;
+      padding: 15px 18px;
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      color: var(--button-text);
+      text-decoration: none;
+      text-align: center;
+
       font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        filter 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .link-button:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.09);
+
+      box-shadow: 0 9px 25px var(--shadow);
+    }
+
+    .link-button:active {
+      transform: scale(0.98);
+    }
+
+    .link-button:focus-visible {
+      outline: 3px solid var(--accent2);
+      outline-offset: 4px;
+    }
+
+    /* BOTÃO PLATAFORMAS */
+
+    .platform-toggle {
+      border: none;
+
+      background: linear-gradient(
+        110deg,
+        #ff315b,
+        #ff654f 48%,
+        #bd42ee
+      );
+
+      box-shadow:
+        0 7px 24px rgba(255, 49, 91, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .platform-toggle:hover {
+      box-shadow:
+        0 10px 30px rgba(255, 49, 91, 0.35),
+        0 0 20px rgba(181, 76, 255, 0.2);
+    }
+
+    .platform-icon {
+      font-size: 17px;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 18px;
+
+      font-size: 13px;
+      transition: transform 0.25s ease;
+    }
+
+    .platform-toggle[aria-expanded="true"] .arrow {
+      transform: rotate(180deg);
+    }
+
+    /* MENU INTERNO DAS PLATAFORMAS */
+
+    .platform-menu {
+      display: grid;
+      grid-template-rows: 0fr;
+
+      opacity: 0;
+      visibility: hidden;
+
+      margin-top: -12px;
+
+      transition:
+        grid-template-rows 0.35s ease,
+        opacity 0.25s ease,
+        margin 0.35s ease,
+        visibility 0.25s ease;
+    }
+
+    .platform-menu-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .platform-menu.open {
+      grid-template-rows: 1fr;
+
+      opacity: 1;
+      visibility: visible;
+      margin-top: 0;
+    }
+
+    .platform-link {
+      min-height: 49px;
+      padding: 13px 16px;
+      border-radius: 14px;
+
+      animation: none;
+    }
+
+    .onlyfans {
+      background: linear-gradient(110deg, #168aff, #0064d9);
+      box-shadow: 0 5px 18px rgba(0, 119, 255, 0.16);
+    }
+
+    .privacy {
+      background: linear-gradient(110deg, #9b35ee, #6521c8);
+      box-shadow: 0 5px 18px rgba(155, 53, 238, 0.17);
+    }
+
+    /* REDES SOCIAIS */
+
+    .social {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid var(--border);
+    }
+
+    .social:hover {
+      border-color: rgba(181, 76, 255, 0.5);
+      box-shadow: 0 7px 22px rgba(181, 76, 255, 0.12);
+    }
+
+    /* RODAPÉ */
+
+    .footer {
+      position: relative;
+      z-index: 1;
+
+      margin-top: 24px;
+      padding-top: 17px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .footer span {
+      color: var(--accent);
+    }
+
+    /* CELULARES */
+
+    @media (max-width: 420px) {
+      body {
+        padding: 78px 13px 25px;
+      }
+
+      .container {
+        padding: 29px 19px 22px;
+        border-radius: 25px;
+      }
+
+      .profile-wrapper {
+        width: 116px;
+        height: 116px;
+      }
+
+      .link-button {
+        min-height: 51px;
+        padding: 14px;
+      }
+    }
+
+    /* ACESSIBILIDADE: REDUZ ANIMAÇÕES SE SOLICITADO */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 
 <body class="dark-mode">
-  <button id="toggle-mode">Modo Claro</button>
 
-  <div class="container">
-    <video autoplay loop muted playsinline class="profile-video">
-      <source src="videoPerfil.mp4" type="video/mp4" />
-    </video>
+  <main class="container">
 
-    <h1>AUGUSTO MALDONATTO</h1>
-    <p class="description"></p>
+    <div class="profile-wrapper">
+      <img
+        src="fotoperfil"
+        class="profile-photo"
+        id="profile-photo"
+        alt="Foto de perfil do Motoca Quente"
+        loading="eager"
+      />
+    </div>
 
-    <div class="links" id="links"></div>
-  </div>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span>Bem-vindo ao meu universo</span>
+    </div>
+
+    <h1>MOTOCA QUENTE</h1>
+
+    <p class="subtitle">
+      Servindo bem para servir sempre 🔥
+      <br />
+      Escolha onde quer me encontrar.
+    </p>
+
+    <nav class="links" aria-label="Minhas plataformas e redes sociais">
+
+      <!-- BOTÃO QUE ABRE AS PLATAFORMAS -->
+
+      <button
+        class="link-button platform-toggle"
+        id="platform-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="platform-menu"
+      >
+        <span class="platform-icon">🔥</span>
+        <span>PLATAFORMAS EXCLUSIVAS</span>
+        <span class="arrow" aria-hidden="true">⌄</span>
+      </button>
+
+      <!-- ONLYFANS E PRIVACY FICAM DENTRO DESTE MENU -->
+
+      <div
+        class="platform-menu"
+        id="platform-menu"
+        aria-hidden="true"
+        inert
+      >
+        <div class="platform-menu-inner">
+
+          <a
+            class="link-button platform-link onlyfans"
+            href="https://onlyfans.com/bikerhothot"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔥 OnlyFans Exclusivo
+          </a>
+
+          <a
+            class="link-button platform-link privacy"
+            href="https://privacy.com.br/profile/augustomaldonatto"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔞 Privacy Premium
+          </a>
+
+        </div>
+      </div>
+
+      <!-- REDES SOCIAIS VISÍVEIS -->
+
+      <a
+        class="link-button social"
+        href="https://mdbt.com.br/5430451d-edd9-4ea9-96e2-2043db4a2de2"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ✈️ Telegram
+      </a>
+
+      <a
+        class="link-button social"
+        href="https://x.com/motocaquente"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        𝕏 &nbsp; X / Twitter
+      </a>
+
+      <a
+        class="link-button social"
+        href="https://www.instagram.com/motocaquente2"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📸 Instagram
+      </a>
+
+    </nav>
+
+    <footer class="footer">
+      FEITO COM <span>♥</span> PARA A TROPA DO MOTOCA
+    </footer>
+
+  </main>
 
   <script>
-    const links = [
-      { url: "https://onlyfans.com/bikerhothot", text: "🔥 OnlyFans Exclusivo", class: "vip" },
-      { url: "https://privacy.com.br/profile/augustomaldonatto", text: "🔞 Privacy Premium", class: "vip" },
-      { url: "https://mdbt.com.br/5430451d-edd9-4ea9-96e2-2043db4a2de2", text: "✈️ Telegram", class: "normal" },
-      { url: "https://x.com/motocaquente", text: "🐦 X", class: "normal" },
-      { url: "https://www.instagram.com/motocaquente2", text: "📷 Instagram", class: "normal" }
-    ];
+    // LOCALIZA AS IMAGENS COM OU SEM EXTENSÃO
+    // Testa arquivos sem extensão, JPG, JPEG, PNG e WEBP.
 
-    const desc = document.querySelector(".description");
-    const container = document.getElementById("links");
+    function loadImageWithFallback(element, baseName, isBackground = false) {
+      const extensions = [
+        "",
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".webp",
+        ".JPG",
+        ".PNG"
+      ];
 
-    function typeText(text, speed, callback) {
-      let i = 0;
-      desc.textContent = "";
-      (function loop() {
-        if (i < text.length) {
-          desc.textContent += text.charAt(i++);
-          setTimeout(loop, speed);
-        } else callback && callback();
-      })();
+      let index = 0;
+
+      function tryNext() {
+        if (index >= extensions.length) {
+          console.error("Imagem não encontrada:", baseName);
+          return;
+        }
+
+        const path = baseName + extensions[index++];
+        const test = new Image();
+
+        test.onload = function () {
+          if (isBackground) {
+            document.body.style.backgroundImage =
+              'linear-gradient(rgba(8, 5, 12, 0.60), rgba(8, 5, 12, 0.78)), url("' +
+              path + '")';
+          } else {
+            element.src = path;
+          }
+        };
+
+        test.onerror = tryNext;
+        test.src = path;
+      }
+
+      tryNext();
     }
 
-    function showLinks() {
-      links.forEach((item, i) => {
-        const a = document.createElement("a");
-        a.href = item.url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = item.text;
-        a.className = item.class;
-        container.appendChild(a);
-        setTimeout(() => a.classList.add("show"), i * 350);
-      });
-    }
+    // FOTO REDONDA DO PERFIL
+    loadImageWithFallback(
+      document.getElementById("profile-photo"),
+      "fotoperfil"
+    );
 
-    typeText("SERVINDO BEM PARA SERVIR SEMPRE 🔥", 45, showLinks);
+    // FOTO DE FUNDO DA PÁGINA
+    loadImageWithFallback(
+      null,
+      "fotofundo",
+      true
+    );
 
-    document.getElementById("toggle-mode").onclick = () => {
-      document.body.classList.toggle("dark-mode");
-      document.body.classList.toggle("light-mode");
-    };
+    // ABRIR E FECHAR O MENU PLATAFORMAS
+
+    const platformToggle = document.getElementById("platform-toggle");
+    const platformMenu = document.getElementById("platform-menu");
+
+    platformToggle.addEventListener("click", () => {
+      const isOpen =
+        platformToggle.getAttribute("aria-expanded") === "true";
+
+      platformToggle.setAttribute("aria-expanded", String(!isOpen));
+
+      platformMenu.classList.toggle("open", !isOpen);
+
+      platformMenu.setAttribute("aria-hidden", String(isOpen));
+      platformMenu.inert = isOpen;
+    });
+
+    // FECHAR O MENU COM A TECLA ESC
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        platformToggle.setAttribute("aria-expanded", "false");
+        platformMenu.classList.remove("open");
+        platformMenu.setAttribute("aria-hidden", "true");
+        platformMenu.inert = true;
+      }
+    });
   </script>
+
 </body>
 </html>
